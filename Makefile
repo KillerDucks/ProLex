@@ -14,7 +14,7 @@ Objects := build/obj
 # Build Directory Variables
 Build_Debug := ./build/debug
 # Program Executable Variables
-runProgram := ./$(Build_Debug)/$(ProgName)
+runProgram := $(Build_Debug)/$(ProgName)
 
 # File Variables
 Source_Files :=  $(shell find src/ -type f -name '*.cpp')
