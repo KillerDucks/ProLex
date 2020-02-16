@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700,900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    font-family: 'Raleway', sans-serif;
+    /*text-align: center;*/
+}
+
+/*==============================header==============================*/
+header {
+    align-items: center;
+    background-color: rgb(10, 93, 170);
+    box-shadow: 5px 5px 15px;
+    /*position: relative;*/
+}
+
+.headerContainer {
+    margin-right: 10%;
+    margin-left: 10%;
+}
+.leftHeader{
+    display: inline-block;
+    width: 50%;
+}
+
+h1{
+    vertical-align: middle;
+    font-weight: bold;
+    color: black;
+}
+
+.navContainer{
+    display: inline-block;
+    width: 49%;
+    text-align: right;
+}
+
+nav{
+    vertical-align: middle;
+    left: auto;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav li {
+    display: inline-block;
+    margin: 1em;
+}
+
+nav a {
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    color: black;
+    font-size: 1;
+}
+
+nav a:hover,
+nav a:focus{
+    color: rgb(207, 10, 10);
+}
+
+/*---------------------------------------------------------------------------------*/
+
+.container {
+    padding: 1rem;
+    margin-top: 3em;
+    box-shadow: 5px 5px 10px;
+}
+
+.labelDiv{
+    text-align: center;
+}
+
+.buttonDiv{
+    text-align: center;
+}
+
+/*---------------------------------------------------------------------------------*/
+
+.TextView{
+    box-shadow: 5px 5px 10px;
+    height: 400px;
+    margin-top: 3em;
+    margin-right: 10%;
+    margin-left: 10%;
+}
