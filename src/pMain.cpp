@@ -3,8 +3,8 @@
 
 int main(int argc, char** argv)
 {
-    printf("Lexing  Lexer.cpp\n");
-    Lexer::Lex  l((char*)"./test/test.cpp");
+    // printf("Lexing  Lexer.cpp\n");
+    Lexer::Lex  l(argv[1]);
     l.Parse();
     Lexer::MD md(l._vLxd);
     return 1;
