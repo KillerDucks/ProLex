@@ -4,6 +4,7 @@ namespace Lexer
 {
     Lex::Lex(char filePath[MAX_PATH])
     {
+        this->fName = filePath;
         // Create an instance of fstream
         std::fstream file;
         // Open a stream to the file
@@ -125,6 +126,7 @@ namespace Lexer
                             int z = i;
                             this->fLines.at(lexed.lNumber + z).second.erase(std::remove_if(this->fLines.at(lexed.lNumber + z).second.begin(), this->fLines.at(lexed.lNumber + z).second.end(), isspace), this->fLines.at(lexed.lNumber + z).second.end());
                             q += this->fLines.at(lexed.lNumber + z).second;
+                            lexed.affectedLines.emplace_back(std::pair<int, std::string>(this->fLines.at(lexed.lNumber + z).first, this->fLines.at(lexed.lNumber + z).second));
                             q += "\n\t\t\t";
                         }
                         toLine = lexed.lNumber;
@@ -135,9 +137,12 @@ namespace Lexer
                         this->fLines.at(lexed.lNumber).second.erase(std::remove_if(this->fLines.at(lexed.lNumber).second.begin(), this->fLines.at(lexed.lNumber).second.end(), isspace), this->fLines.at(lexed.lNumber).second.end());
                         q += this->fLines.at(lexed.lNumber).second;
                         toLine = lexed.lNumber + 1;
+                        lexed.affectedLines.emplace_back(std::pair<int, std::string>(this->fLines.at(lexed.lNumber).first, this->fLines.at(lexed.lNumber).second));
                     }
                     lexed.lNumber++;
-                    
+                    lexed.fileName = this->fName;
+                    this->_vLxd.emplace_back(lexed);
+                    lexed.affectedLines.clear();
                     printf("Directive Found:\n\tLine Number [%d:%d]\n\tComment [%s]\n\tAffected Line   %s\n\n", lexed.lNumber, toLine, lexed.comment.c_str(), q.c_str());
                 }
             }

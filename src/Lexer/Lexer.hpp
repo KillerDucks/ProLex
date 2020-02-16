@@ -17,7 +17,7 @@ namespace Lexer
 
     class Lex 
     {
-        private:
+        public:
         std::vector<std::pair<int, std::string>> fLines;
         typedef struct LexOptions
         {
@@ -27,13 +27,18 @@ namespace Lexer
 
         typedef struct Lexed
         {
-            std::string     type;
-            int             lNumber;
-            LexOptions      lOpts;
-            std::string     comment;
+            std::string                                 fileName;
+            std::string                                 type;
+            int                                         lNumber;
+            LexOptions                                  lOpts;
+            std::string                                 comment;
+            std::vector<std::pair<int, std::string>>    affectedLines; // v.first = line number, v.second = code on that line
         } LEXED, *PLEXED;
 
-        public:
+        std::vector<Lex::Lexed> _vLxd;
+
+        std::string fName;
+
         Lex(char filePath[MAX_PATH]);
         ~Lex();
 

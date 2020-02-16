@@ -41,6 +41,7 @@ namespace WebX
             {
                 // This file is a Web file
                 files.push_back(file.path());
+                // [TODO] Use printff();
                 printf("File found [%s]\n", file.path().c_str());
             }
         }
