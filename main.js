@@ -22,23 +22,22 @@ app.post("/upload", function (req, res, next) {
     file.pipe(fstream);
     fstream.on('close', function(){
       console.log("Upload Finished of " + filename);
+      exec('./ProLexCLI ' + filename, (err, stdout, stderr) => {
+        if (err) {
+          // node couldn't execute the command
+          console.log("A ERROR HAS OCCURED");
+          return;
+        }
+      
+        // the *entire* stdout and stderr (buffered)
+        console.log(`stdout: ${stdout}`);
+        console.log(`stderr: ${stderr}`);
+      });
       res.redirect('back');
-    })
-  })
-})
+    });
+  });
+});
 
 app.listen(8080, () => {
   console.log("dfigvnjd");
-})
-
-
-exec('cat *.js bad_file | wc -l', (err, stdout, stderr) => {
-  if (err) {
-    // node couldn't execute the command
-    return;
-  }
-
-  // the *entire* stdout and stderr (buffered)
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
 });
